@@ -1524,7 +1524,7 @@ Concerning TYPE, LEVEL and SUB-TYPE see `adoc-re-llisti'."
     ;; matcher function
     `(lambda (end)
       (and (re-search-forward ,(adoc-re-verbatim-paragraph-sequence) end t)
-           (not (text-property-not-all (match-beginning 0) (match-end 0) adoc-reserved nil))))
+           (not (text-property-not-all (match-beginning 0) (match-end 0) 'adoc-reserved nil))))
     ;; highlighers
     '(1 '(face adoc-monospace adoc-reserved t font-lock-multiline t))))
 
@@ -1681,7 +1681,7 @@ meta characters."
       '(1 '(face adoc-replacement adoc-reserved t) t))))
 
 ;; - To ensure that indented lines are nicely aligned. They only look aligned if
-;;   the whites at line beginning have a fixed with font.
+;;   the whites at line beginning have a fixed width font.
 ;; - Some faces have properties which are also visbile on whites
 ;;   (underlines/backgroundcolor/...), for example links typically gave
 ;;   underlines. If now a link in an indented paragraph (e.g. because its a list
